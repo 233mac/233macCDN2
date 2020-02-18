@@ -1,0 +1,18 @@
+language: bash
+script:
+  - pwd
+branches:
+  only:
+  - master
+
+before_deploy:
+  # Set up git user name and tag this commit
+  - git config --local user.name "233mac"
+  - git config --local user.email "service@233mac.com"
+
+deploy:
+  provider: releases
+  api_key: ${GITHUB_TOKEN}
+  skip_cleanup: true
+  on:
+      tags: true
